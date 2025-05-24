@@ -24,7 +24,7 @@ async def get_all_users():
 @app.get("/users/{user_id}")
 async def get_user(user_id:int = Path(gt = 0)):
     user = UserModel.get(id = user_id)
-    if not user is None:
+    if user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
